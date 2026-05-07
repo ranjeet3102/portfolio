@@ -1,26 +1,254 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-base:       #fef9ef;
+  --bg-surface:    #f8f3e9;
+  --bg-elevated:   #f3ede0;
+  --bg-card:       #f0ead8;
+
+  /* Contrast & Structure */
+  --contrast-black: #141218;
+  --border-slate:   #cac4d0;
+
+  /* Accent Palette */
+  --accent-terracotta: #C1714A;
+  --accent-bronze:     #8C5E38;
+  --accent-warm:       #D4845A;
+
+  /* Typography */
+  --text-primary:   #2D2A26;
+  --text-secondary: #49454F;
+  --text-muted:     #938F99;
+
+  /* Legacy aliases (used in components via var()) */
+  --accent-lime:   #C1714A;
+  --accent-lime-2: #D4845A;
+  --accent-ivory:  #2D2A26;
+  --accent-gold:   #8C5E38;
+  --bronze:        #8C5E38;
+  --stone:         #938F99;
+  --amber-glow:    rgba(193, 113, 74, 0.10);
+
+  --font-display:  'Outfit', 'Syne', sans-serif;
+  --font-body:     'Inter', sans-serif;
+
+  --radius-sm:     8px;
+  --radius-md:     16px;
+  --radius-lg:     24px;
+  --radius-xl:     32px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-base);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--accent-terracotta); border-radius: 2px; }
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection { background: var(--accent-terracotta); color: #fef9ef; }
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+/* ─── Glass Morphism ─────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(254, 249, 239, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(202, 196, 208, 0.5);
+}
+
+.glass-warm {
+  background: rgba(193, 113, 74, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(193, 113, 74, 0.15);
+}
+
+/* ─── Glow Effects ───────────────────────────────────────────────────────── */
+.glow-lime {
+  box-shadow: 0 0 20px rgba(193, 113, 74, 0.18),
+              0 0 60px rgba(193, 113, 74, 0.08);
+}
+.glow-lime-text {
+  text-shadow: 0 0 30px rgba(193, 113, 74, 0.35);
+}
+.glow-gold {
+  box-shadow: 0 0 20px rgba(140, 94, 56, 0.18),
+              0 0 60px rgba(140, 94, 56, 0.08);
+}
+
+/* ─── Gradient Borders ───────────────────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(193,113,74,0.35), rgba(140,94,56,0.2), rgba(202,196,208,0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── Animated Gradient Orbs ─────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.22;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(30px) scale(0.95); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.22; }
+  50%       { opacity: 0.32; }
+}
+
+/* ─── Marquee ────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ─── Text Gradient ──────────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-terracotta), var(--accent-bronze));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Section Label ──────────────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+}
+
+/* ─── Btn Primary ────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--contrast-black);
+  color: #fef9ef;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--accent-terracotta);
+  box-shadow: 0 8px 32px rgba(193, 113, 74, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid var(--border-slate);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+.btn-outline:hover {
+  border-color: var(--accent-terracotta);
+  color: var(--accent-terracotta);
+  background: rgba(193, 113, 74, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ─── Input Styles ───────────────────────────────────────────────────────── */
+.luxury-input {
+  width: 100%;
+  background: rgba(254, 249, 239, 0.8);
+  border: 1px solid var(--border-slate);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.luxury-input::placeholder { color: var(--text-muted); }
+.luxury-input:focus {
+  border-color: var(--accent-terracotta);
+  box-shadow: 0 0 0 3px rgba(193, 113, 74, 0.10), 0 4px 16px rgba(193, 113, 74, 0.08);
+  background: #fff;
+}
+
+/* ─── Cursor ─────────────────────────────────────────────────────────────── */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(193,113,74,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s linear;
 }
