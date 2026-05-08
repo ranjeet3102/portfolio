@@ -43,13 +43,13 @@ export default function Navbar() {
           zIndex: 1000,
           padding: scrolled ? "12px 0" : "20px 0",
           background: scrolled
-            ? "rgba(254,249,239,0.90)"
+            ? "rgba(10,10,10,0.90)"
             : "transparent",
           backdropFilter: scrolled ? "blur(24px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
           borderBottom: scrolled
-            ? "1px solid rgba(202,196,208,0.5)"
-            : "none",
+            ? "1px solid rgba(255,255,255,0.07)"
+            : "1px solid rgba(255,255,255,0)",
           transition: "all 0.4s cubic-bezier(0.4,0,0.2,1)",
         }}
       >
@@ -72,13 +72,13 @@ export default function Navbar() {
               fontFamily: "var(--font-display)",
               fontWeight: 800,
               fontSize: "1.35rem",
-              color: "var(--accent-terracotta)",
+              color: "var(--accent-lime)",
               textDecoration: "none",
               letterSpacing: "-0.02em",
               cursor: "pointer",
             }}
           >
-            YN<span style={{ color: "var(--text-muted)" }}>.</span>
+            R<span style={{ color: "var(--text-muted)" }}>.</span>
           </motion.a>
 
           {/* Desktop Nav Links */}
@@ -105,7 +105,7 @@ export default function Navbar() {
                     letterSpacing: "0.04em",
                     color:
                       activeLink === link.href
-                        ? "var(--accent-terracotta)"
+                        ? "var(--accent-lime)"
                         : "var(--text-secondary)",
                     transition: "color 0.25s ease",
                     position: "relative",
@@ -118,7 +118,7 @@ export default function Navbar() {
                   onMouseLeave={(e) =>
                     ((e.target as HTMLElement).style.color =
                       activeLink === link.href
-                        ? "var(--accent-terracotta)"
+                        ? "var(--accent-lime)"
                         : "var(--text-secondary)")
                   }
                 >
@@ -174,14 +174,14 @@ export default function Navbar() {
               right: 0,
               bottom: 0,
               width: "280px",
-              background: "rgba(248,243,233,0.97)",
+              background: "rgba(17,17,17,0.97)",
               backdropFilter: "blur(30px)",
               zIndex: 999,
               padding: "100px 32px 40px",
               display: "flex",
               flexDirection: "column",
               gap: "8px",
-              borderLeft: "1px solid rgba(202,196,208,0.6)",
+              borderLeft: "1px solid rgba(255,255,255,0.07)",
             }}
           >
             {navLinks.map((link, i) => (
@@ -200,11 +200,11 @@ export default function Navbar() {
                   fontWeight: 700,
                   color:
                     activeLink === link.href
-                      ? "var(--accent-terracotta)"
+                      ? "var(--accent-lime)"
                       : "var(--text-primary)",
                   textAlign: "left",
                   padding: "12px 0",
-                  borderBottom: "1px solid rgba(202,196,208,0.4)",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
                   transition: "color 0.2s",
                 }}
               >

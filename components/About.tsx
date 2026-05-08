@@ -22,7 +22,7 @@ export default function About() {
           height: "600px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(140,94,56,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(194,168,120,0.07) 0%, transparent 70%)",
           top: "50%",
           right: "-10%",
           transform: "translateY(-50%)",
@@ -84,7 +84,7 @@ export default function About() {
                   inset: "-20px",
                   borderRadius: "40px",
                   background:
-                    "linear-gradient(135deg, rgba(193,113,74,0.18), rgba(140,94,56,0.1), rgba(202,196,208,0.12))",
+                    "linear-gradient(135deg, rgba(208,255,0,0.12), rgba(194,168,120,0.07), rgba(255,255,255,0.04))",
                   filter: "blur(30px)",
                   zIndex: 0,
                 }}
@@ -102,50 +102,29 @@ export default function About() {
                   borderRadius: "32px",
                   overflow: "hidden",
                   boxShadow:
-                    "0 30px 80px rgba(45,42,38,0.15), 0 0 0 1px rgba(193,113,74,0.15)",
+                    "0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(208,255,0,0.12)",
                 }}
               >
-                {/* Placeholder avatar */}
-                <div
+                {/* Profile photo */}
+                <img
+                  src="/profile.jpeg"
+                  alt="Ranjeet"
                   style={{
                     width: "100%",
                     height: "100%",
-                    background:
-                      "linear-gradient(145deg, #f0ead8 0%, #f8f3e9 40%, #efe6d0 100%)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "16px",
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                    display: "block",
+                    filter: "grayscale(100%)",
+                    transition: "filter 0.5s ease",
                   }}
-                >
-                  <div
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                      borderRadius: "50%",
-                      background:
-                        "linear-gradient(135deg, rgba(193,113,74,0.15), rgba(140,94,56,0.1))",
-                      border: "2px solid rgba(193,113,74,0.35)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <User size={56} color="rgba(193,113,74,0.55)" />
-                  </div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.8rem",
-                      color: "var(--text-muted)",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Your Photo Here
-                  </span>
-                </div>
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                  }}
+                />
 
                 {/* Glass overlay shimmer */}
                 <div
@@ -153,14 +132,14 @@ export default function About() {
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%)",
+                      "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)",
                     pointerEvents: "none",
                   }}
                 />
               </div>
 
               {/* Floating tag */}
-              <div
+              {/* <div
                 className="glass"
                 style={{
                   position: "absolute",
@@ -176,7 +155,7 @@ export default function About() {
                     fontFamily: "var(--font-display)",
                     fontSize: "1.4rem",
                     fontWeight: 800,
-                    color: "var(--accent-terracotta)",
+                    color: "var(--accent-lime)",
                     lineHeight: 1,
                   }}
                 >
@@ -193,7 +172,7 @@ export default function About() {
                 >
                   Years Coding
                 </div>
-              </div>
+              </div> */}
             </div>
           </ScrollReveal>
 
@@ -213,10 +192,10 @@ export default function About() {
                   }}
                 >
                   Hey, I&apos;m{" "}
-                  <span style={{ color: "var(--accent-terracotta)" }}>
-                    Your Name
+                  <span style={{ color: "var(--accent-lime)" }}>
+                    Ranjeet
                   </span>{" "}
-                  👋
+                  
                 </h3>
                 <p
                   style={{
@@ -259,18 +238,18 @@ export default function About() {
               >
                 {[
                   {
-                    icon: <Zap size={20} color="var(--accent-terracotta)" />,
+                    icon: <Zap size={20} color="var(--accent-lime)" />,
                     title: "AI-First Thinking",
                     desc: "Building with LLMs, ML pipelines, and NLP at the core.",
-                    hoverBorder: "rgba(193,113,74,0.3)",
-                    defaultBorder: "rgba(202,196,208,0.5)",
+                    hoverBorder: "rgba(208,255,0,0.3)",
+                    defaultBorder: "rgba(255,255,255,0.07)",
                   },
                   {
-                    icon: <Target size={20} color="var(--accent-bronze)" />,
+                    icon: <Target size={20} color="var(--accent-lime)" />,
                     title: "Full-Stack Craft",
                     desc: "From database to deployment — end-to-end ownership.",
-                    hoverBorder: "rgba(140,94,56,0.3)",
-                    defaultBorder: "rgba(202,196,208,0.5)",
+                    hoverBorder: "rgba(194,168,120,0.3)",
+                    defaultBorder: "rgba(255,255,255,0.07)",
                   },
                 ].map((item) => (
                   <div
@@ -285,7 +264,7 @@ export default function About() {
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
                       (e.currentTarget as HTMLDivElement).style.borderColor = item.hoverBorder;
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 32px rgba(45,42,38,0.10)";
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 32px rgba(0,0,0,0.3)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
@@ -332,12 +311,14 @@ export default function About() {
                   Get In Touch
                 </button>
                 <a
-                  href="/resume.pdf"
+                  href="https://drive.google.com/file/d/16gieQpg-L_aYv8mKSxJB1c6g45Z6yHHo/view?usp=drivesdk"
                   className="btn-outline"
                   style={{ fontSize: "0.85rem" }}
                   download
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Download CV
+                  Download Resume
                 </a>
               </div>
             </div>

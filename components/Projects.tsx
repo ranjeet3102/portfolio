@@ -10,9 +10,10 @@ const projects = [
     description:
       "A full-stack personal finance management application featuring real-time expense tracking, visual analytics dashboards, smart categorization, and budget goal alerts.",
     tags: ["React", "Spring Boot", "PostgreSQL", "Java"],
-    github: "#",
-    demo: "#",
-    accent: "var(--accent-terracotta)",
+    github: "https://github.com/ranjeet3102/budgettracker",
+    demo: "https://budgettracker-nine.vercel.app/",
+    accent: "var(--accent-lime)",
+    image: "/budget.png",
   },
   {
     id: "construction-site",
@@ -20,9 +21,10 @@ const projects = [
     description:
       "A project management platform for construction sites with task scheduling, resource allocation, progress tracking, and team collaboration tools.",
     tags: ["Next.js", "Node.js", "MySQL", "Express.js"],
-    github: "#",
-    demo: "#",
-    accent: "var(--accent-bronze)",
+    github: "https://github.com/ranjeet3102/nirmala_construction",
+    demo: "https://www.nirmalaconstruction.me/",
+    accent: "var(--accent-lime)",
+    image: "/construct.png",
   },
   {
     id: "ecommerce",
@@ -30,9 +32,10 @@ const projects = [
     description:
       "A scalable, full-featured e-commerce solution with product management, secure payments, inventory control, and a modern shopping cart experience.",
     tags: ["React", "Spring Boot", "Supabase", "Prisma"],
-    github: "#",
+    github: "https://github.com/ranjeet3102",
     demo: "#",
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
+    image:"ecommerce.png"
   },
   {
     id: "resume-analyzer",
@@ -40,20 +43,21 @@ const projects = [
     description:
       "An AI-powered tool that analyzes resumes using NLP and ML models to score candidates, extract key insights, and provide ATS optimization recommendations.",
     tags: ["Python", "NLP", "Machine Learning", "FastAPI"],
-    github: "#",
+    github: "https://github.com/ranjeet3102",
     demo: "#",
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-lime)",
+    image:"/resume.png"
   },
-  {
-    id: "blueprintml",
-    title: "BlueprintML",
-    description:
-      "A low-code machine learning pipeline builder that lets users design, train, and deploy ML workflows visually — powered by LLM agents for smart assistance.",
-    tags: ["Python", "LLM Agents", "React", "FastAPI"],
-    github: "#",
-    demo: "#",
-    accent: "var(--accent-terracotta)",
-  },
+  // {
+  //   id: "blueprintml",
+  //   title: "BlueprintML",
+  //   description:
+  //     "A low-code machine learning pipeline builder that lets users design, train, and deploy ML workflows visually — powered by LLM agents for smart assistance.",
+  //   tags: ["Python", "LLM Agents", "React", "FastAPI"],
+  //   github: "#",
+  //   demo: "#",
+  //   accent: "var(--accent-lime)",
+  // },
 ];
 
 export default function Projects() {
@@ -76,7 +80,7 @@ export default function Projects() {
           height: "700px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(193,113,74,0.07) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(208,255,0,0.05) 0%, transparent 70%)",
           bottom: "-20%",
           left: "-10%",
           filter: "blur(80px)",
@@ -101,7 +105,7 @@ export default function Projects() {
             >
               Things I&apos;ve
               <br />
-              <span className="text-gradient">built &amp; shipped.</span>
+              <span className="text-gradient">built.</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -122,8 +126,8 @@ export default function Projects() {
                   alignItems: "center",
                   padding: "48px",
                   borderRadius: "32px",
-                  background: "rgba(45,42,38,0.025)",
-                  border: "1px solid rgba(202,196,208,0.55)",
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.07)",
                   position: "relative",
                   overflow: "hidden",
                   transition: "border-color 0.4s ease, box-shadow 0.4s ease",
@@ -132,10 +136,10 @@ export default function Projects() {
                 className="project-card"
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLDivElement).style.borderColor = `${project.accent}40`;
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 30px 80px rgba(45,42,38,0.12), 0 0 0 1px ${project.accent}20`;
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px ${project.accent}20`;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(202,196,208,0.55)";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)";
                   (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
                 }}
               >
@@ -153,44 +157,67 @@ export default function Projects() {
                   }}
                 />
 
-                {/* Image placeholder — reorder for odd items */}
+                {/* Image — reorder for odd items */}
                 {idx % 2 !== 0 && (
                   <div
                     style={{
                       borderRadius: "20px",
-                      aspectRatio: "16/10",
+                      aspectRatio: "20/10",
                       background:
-                        "linear-gradient(135deg, #f0ead8 0%, #ede6d0 100%)",
+                        "linear-gradient(135deg, #1C1C1C 0%, #161616 100%)",
                       border: `1px solid ${project.accent}25`,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "12px",
                       overflow: "hidden",
                       position: "relative",
                     }}
                   >
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={`${project.accent}55`} strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "0.75rem",
-                        color: "var(--text-muted)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Project Preview
-                    </span>
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background: `linear-gradient(135deg, ${project.accent}06 0%, transparent 60%)`,
-                        pointerEvents: "none",
-                      }}
-                    />
+                    {project.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    ) : (
+                      <>
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "12px",
+                          }}
+                        >
+                          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={`${project.accent}55`} strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+                          <span
+                            style={{
+                              fontFamily: "var(--font-body)",
+                              fontSize: "0.75rem",
+                              color: "var(--text-muted)",
+                              letterSpacing: "0.1em",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Project Preview
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: `linear-gradient(135deg, ${project.accent}06 0%, transparent 60%)`,
+                            pointerEvents: "none",
+                          }}
+                        />
+                      </>
+                    )}
                   </div>
                 )}
 
@@ -265,6 +292,8 @@ export default function Projects() {
                       className="btn-outline"
                       style={{ fontSize: "0.8rem", padding: "9px 20px" }}
                       aria-label={`GitHub for ${project.title}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <FiGithub size={15} /> GitHub
                     </a>
@@ -273,50 +302,75 @@ export default function Projects() {
                       className="btn-primary"
                       style={{ fontSize: "0.8rem", padding: "9px 20px" }}
                       aria-label={`Live demo for ${project.title}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <ExternalLink size={15} /> Live Demo
                     </a>
                   </div>
                 </div>
 
-                {/* Image placeholder — for even items */}
+                {/* Image — for even items */}
                 {idx % 2 === 0 && (
                   <div
                     style={{
                       borderRadius: "20px",
-                      aspectRatio: "16/10",
+                      aspectRatio: "22/11",
                       background:
-                        "linear-gradient(135deg, #f0ead8 0%, #ede6d0 100%)",
+                        "linear-gradient(135deg, #1C1C1C 0%, #161616 100%)",
                       border: `1px solid ${project.accent}25`,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "12px",
                       overflow: "hidden",
                       position: "relative",
                     }}
                   >
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={`${project.accent}55`} strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "0.75rem",
-                        color: "var(--text-muted)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Project Preview
-                    </span>
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background: `linear-gradient(135deg, ${project.accent}06 0%, transparent 60%)`,
-                        pointerEvents: "none",
-                      }}
-                    />
+                    {project.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    ) : (
+                      <>
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "12px",
+                          }}
+                        >
+                          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={`${project.accent}55`} strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+                          <span
+                            style={{
+                              fontFamily: "var(--font-body)",
+                              fontSize: "0.75rem",
+                              color: "var(--text-muted)",
+                              letterSpacing: "0.1em",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Project Preview
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: `linear-gradient(135deg, ${project.accent}06 0%, transparent 60%)`,
+                            pointerEvents: "none",
+                          }}
+                        />
+                      </>
+                    )}
                   </div>
                 )}
               </div>

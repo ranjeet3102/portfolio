@@ -5,28 +5,28 @@ import { Mail, Send, ArrowRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import emailjs from "@emailjs/browser";
 const socialLinks = [
   {
     label: "Email",
-    value: "your.email@gmail.com",
-    href: "mailto:your.email@gmail.com",
+    value: "ranjeetchandrasekaran.ml@gmail.com",
+    href: "mailto:ranjeetchandrasekaran.ml@gmail.com",
     icon: <Mail size={20} />,
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/yourprofile",
-    href: "https://linkedin.com/in/yourprofile",
+    value: "linkedin.com",
+    href: "https://www.linkedin.com/in/ranjeet-c3102",
     icon: <FaLinkedinIn size={20} />,
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-lime)",
   },
   {
     label: "GitHub",
-    value: "github.com/yourusername",
-    href: "https://github.com/yourusername",
+    value: "github.com",
+    href: "https://github.com/ranjeet3102",
     icon: <FiGithub size={20} />,
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
   },
 ];
 
@@ -35,13 +35,41 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    // Simulate sending
-    await new Promise((r) => setTimeout(r, 1400));
-    setSent(true);
-    setSending(false);
+
+    emailjs
+      .send(
+        "service_rtsazz4",
+        "template_2geiv6m",
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          time: new Date().toLocaleString(),
+        },
+        "2UZg-oYWTzFbSkzNY"
+      )
+      .then(() => {
+        setSent(true);
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+        setSending(false);
+        
+        // Hide the success message after 5 seconds and show the form again
+        setTimeout(() => {
+          setSent(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Failed to send message.");
+        setSending(false);
+      });
   };
 
   return (
@@ -64,7 +92,7 @@ export default function Contact() {
           right: 0,
           height: "1px",
           background:
-            "linear-gradient(90deg, transparent, rgba(193,113,74,0.35), transparent)",
+            "linear-gradient(90deg, transparent, rgba(208,255,0,0.3), transparent)",
         }}
       />
       {/* Ambient orbs */}
@@ -76,7 +104,7 @@ export default function Contact() {
           height: "600px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(193,113,74,0.07) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(208,255,0,0.05) 0%, transparent 70%)",
           bottom: "-20%",
           right: "-15%",
           filter: "blur(80px)",
@@ -143,8 +171,8 @@ export default function Contact() {
                     gap: "16px",
                     padding: "20px 24px",
                     borderRadius: "16px",
-                    background: "rgba(45,42,38,0.03)",
-                    border: "1px solid rgba(202,196,208,0.55)",
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.07)",
                     textDecoration: "none",
                     transition: "all 0.3s ease",
                     color: "var(--text-primary)",
@@ -153,11 +181,11 @@ export default function Contact() {
                     (e.currentTarget as HTMLAnchorElement).style.borderColor = `${social.accent}45`;
                     (e.currentTarget as HTMLAnchorElement).style.background = `${social.accent}07`;
                     (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(6px)";
-                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(45,42,38,0.08)";
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(202,196,208,0.55)";
-                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(45,42,38,0.03)";
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.07)";
+                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.03)";
                     (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(0)";
                     (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
                   }}
@@ -239,12 +267,13 @@ export default function Contact() {
                       width: "72px",
                       height: "72px",
                       borderRadius: "50%",
-                      background: "rgba(193,113,74,0.10)",
-                      border: "2px solid rgba(193,113,74,0.4)",
+                      background: "rgba(208,255,0,0.08)",
+                      border: "2px solid rgba(208,255,0,0.4)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: "2rem",
+                      color: "var(--accent-lime)",
                     }}
                   >
                     ✓
@@ -254,7 +283,7 @@ export default function Contact() {
                       fontFamily: "var(--font-display)",
                       fontSize: "1.5rem",
                       fontWeight: 700,
-                      color: "var(--accent-terracotta)",
+                      color: "var(--accent-lime)",
                     }}
                   >
                     Message Sent!
@@ -293,7 +322,7 @@ export default function Contact() {
                       id="contact-name"
                       type="text"
                       className="luxury-input"
-                      placeholder="John Doe"
+                      placeholder="Ranjeet"
                       required
                       value={form.name}
                       onChange={(e) =>
@@ -322,7 +351,7 @@ export default function Contact() {
                       id="contact-email"
                       type="email"
                       className="luxury-input"
-                      placeholder="john@example.com"
+                      placeholder="ranjeet@gmail.com"
                       required
                       value={form.email}
                       onChange={(e) =>
@@ -393,7 +422,7 @@ export default function Contact() {
           style={{
             marginTop: "80px",
             paddingTop: "32px",
-            borderTop: "1px solid rgba(202,196,208,0.6)",
+            borderTop: "1px solid rgba(255,255,255,0.07)",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -408,18 +437,18 @@ export default function Contact() {
               color: "var(--text-muted)",
             }}
           >
-            © 2026 Your Name. Crafted with ❤️ &amp; coffee.
+            © 2026.
           </span>
           <span
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "0.9rem",
               fontWeight: 700,
-              color: "var(--accent-terracotta)",
+              color: "var(--accent-lime)",
               letterSpacing: "-0.01em",
             }}
           >
-            YN.
+            R.
           </span>
         </div>
       </div>

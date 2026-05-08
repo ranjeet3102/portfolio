@@ -8,7 +8,7 @@ const certificates = [
     title: "Machine Learning Specialization",
     issuer: "Coursera — DeepLearning.AI",
     date: "2024",
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
     link: "#",
   },
   {
@@ -16,7 +16,7 @@ const certificates = [
     title: "Full Stack Web Development",
     issuer: "Udemy",
     date: "2023",
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-gold)",
     link: "#",
   },
   {
@@ -24,7 +24,7 @@ const certificates = [
     title: "Natural Language Processing",
     issuer: "Coursera — DeepLearning.AI",
     date: "2024",
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
     link: "#",
   },
   {
@@ -32,7 +32,7 @@ const certificates = [
     title: "Spring Boot & Microservices",
     issuer: "Udemy",
     date: "2023",
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-gold)",
     link: "#",
   },
   {
@@ -40,7 +40,7 @@ const certificates = [
     title: "Google Cloud Fundamentals",
     issuer: "Google Cloud",
     date: "2024",
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
     link: "#",
   },
   {
@@ -48,7 +48,7 @@ const certificates = [
     title: "Prompt Engineering for AI",
     issuer: "OpenAI / Coursera",
     date: "2024",
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-gold)",
     link: "#",
   },
 ];
@@ -73,7 +73,7 @@ export default function Certificates() {
           height: "500px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(140,94,56,0.09) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(194,168,120,0.07) 0%, transparent 70%)",
           top: "10%",
           right: "-5%",
           filter: "blur(70px)",
@@ -128,7 +128,7 @@ export default function Certificates() {
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 24px 60px rgba(45,42,38,0.12), 0 0 0 1px ${cert.accent}30`;
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px ${cert.accent}30`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
@@ -141,7 +141,7 @@ export default function Certificates() {
                     width: "100%",
                     height: "140px",
                     borderRadius: "14px",
-                    background: `linear-gradient(135deg, #f0ead8 0%, #ede6d0 100%)`,
+                    background: `linear-gradient(135deg, #1C1C1C 0%, #161616 100%)`,
                     border: `1px solid ${cert.accent}20`,
                     display: "flex",
                     alignItems: "center",

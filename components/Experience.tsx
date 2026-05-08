@@ -12,7 +12,7 @@ const experiences = [
     description:
       "Designed and developed responsive web applications using modern frontend frameworks. Collaborated closely with design and product teams to deliver pixel-perfect, performant user experiences.",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    accent: "var(--accent-terracotta)",
+    accent: "var(--accent-lime)",
   },
   {
     id: "ts-techy",
@@ -23,7 +23,7 @@ const experiences = [
     description:
       "Built and maintained full-stack web solutions for clients across multiple domains. Led feature development for client dashboards and contributed to backend API design and integration.",
     tech: ["Java", "Spring Boot", "React", "MySQL"],
-    accent: "var(--accent-bronze)",
+    accent: "var(--accent-lime)",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Experience() {
           right: 0,
           height: "1px",
           background:
-            "linear-gradient(90deg, transparent, rgba(140,94,56,0.4), transparent)",
+            "linear-gradient(90deg, transparent, rgba(194,168,120,0.35), transparent)",
         }}
       />
 
@@ -86,7 +86,7 @@ export default function Experience() {
               bottom: 0,
               width: "1px",
               background:
-                "linear-gradient(to bottom, var(--accent-terracotta), var(--accent-bronze), transparent)",
+                "linear-gradient(to bottom, var(--accent-lime), var(--accent-gold), transparent)",
               opacity: 0.4,
             }}
           />
@@ -99,7 +99,7 @@ export default function Experience() {
                   <div
                     style={{
                       position: "absolute",
-                      left: "-60px",
+                      left: "-56px",
                       top: "32px",
                       width: "16px",
                       height: "16px",
@@ -120,7 +120,7 @@ export default function Experience() {
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLDivElement).style.transform = "translateX(8px)";
-                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(45,42,38,0.12), 0 0 0 1px ${exp.accent}30`;
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px ${exp.accent}30`;
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLDivElement).style.transform = "translateX(0)";
@@ -191,8 +191,8 @@ export default function Experience() {
                           gap: "8px",
                           padding: "8px 16px",
                           borderRadius: "100px",
-                          background: "rgba(45,42,38,0.04)",
-                          border: "1px solid rgba(202,196,208,0.6)",
+                          background: "rgba(255,255,255,0.04)",
+                          border: "1px solid rgba(255,255,255,0.08)",
                           flexShrink: 0,
                         }}
                       >

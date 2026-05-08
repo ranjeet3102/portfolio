@@ -9,22 +9,22 @@ const marqueeItems = [
 const skillCategories = [
   {
     label: "Languages",
-    color: "var(--accent-terracotta)",
+    color: "var(--accent-lime)",
     skills: ["Java", "Python", "JavaScript", "TypeScript"],
   },
   {
     label: "Frontend",
-    color: "var(--accent-bronze)",
+    color: "var(--accent-lime)",
     skills: ["HTML", "CSS", "React", "Next.js", "Node.js"],
   },
   {
     label: "Backend & Database",
-    color: "var(--accent-warm)",
+    color: "var(--accent-lime-2)",
     skills: ["Spring Boot", "Express.js", "PostgreSQL", "MySQL", "Prisma", "Supabase"],
   },
   {
     label: "AI & Machine Learning",
-    color: "var(--accent-terracotta)",
+    color: "var(--accent-lime)",
     skills: [
       "Generative AI",
       "Machine Learning",
@@ -59,7 +59,7 @@ export default function Skills() {
           right: 0,
           height: "1px",
           background:
-            "linear-gradient(90deg, transparent, rgba(193,113,74,0.35), transparent)",
+            "linear-gradient(90deg, transparent, rgba(208,255,0,0.3), transparent)",
         }}
       />
 
@@ -113,7 +113,7 @@ export default function Skills() {
                 alignItems: "center",
                 gap: "0",
                 padding: "0 40px",
-                borderRight: "1px solid rgba(202,196,208,0.5)",
+                borderRight: "1px solid rgba(255,255,255,0.06)",
               }}
             >
               <span
@@ -123,19 +123,19 @@ export default function Skills() {
                   fontWeight: 800,
                   letterSpacing: "-0.02em",
                   color: "transparent",
-                  WebkitTextStroke: "1px rgba(193,113,74,0.35)",
+                  WebkitTextStroke: "1px rgba(208,255,0,0.25)",
                   whiteSpace: "nowrap",
                   transition: "all 0.3s",
                   cursor: "default",
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLSpanElement).style.color = "var(--accent-terracotta)";
+                  (e.target as HTMLSpanElement).style.color = "var(--accent-lime)";
                   (e.target as HTMLSpanElement).style.webkitTextStroke = "1px transparent";
-                  (e.target as HTMLSpanElement).style.filter = "drop-shadow(0 0 20px rgba(193,113,74,0.35))";
+                  (e.target as HTMLSpanElement).style.filter = "drop-shadow(0 0 20px rgba(208,255,0,0.4))";
                 }}
                 onMouseLeave={(e) => {
                   (e.target as HTMLSpanElement).style.color = "transparent";
-                  (e.target as HTMLSpanElement).style.webkitTextStroke = "1px rgba(193,113,74,0.35)";
+                  (e.target as HTMLSpanElement).style.webkitTextStroke = "1px rgba(208,255,0,0.25)";
                   (e.target as HTMLSpanElement).style.filter = "none";
                 }}
               >
@@ -170,7 +170,7 @@ export default function Skills() {
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(45,42,38,0.12), 0 0 0 1px ${cat.color}35`;
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px ${cat.color}35`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
@@ -220,8 +220,8 @@ export default function Skills() {
                         gap: "12px",
                         padding: "10px 14px",
                         borderRadius: "10px",
-                        background: "rgba(45,42,38,0.03)",
-                        border: "1px solid rgba(202,196,208,0.5)",
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.07)",
                         transition: "all 0.25s ease",
                       }}
                       onMouseEnter={(e) => {
@@ -229,8 +229,8 @@ export default function Skills() {
                         (e.currentTarget as HTMLDivElement).style.borderColor = `${cat.color}40`;
                       }}
                       onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLDivElement).style.background = "rgba(45,42,38,0.03)";
-                        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(202,196,208,0.5)";
+                        (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
+                        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)";
                       }}
                     >
                       <span
