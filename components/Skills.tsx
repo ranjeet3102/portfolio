@@ -148,9 +148,11 @@ export default function Skills() {
 
       {/* ── Skill Categories Grid ── */}
       <div
+        className="skills-container"
         style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 32px" }}
       >
         <div
+          className="skills-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -251,6 +253,18 @@ export default function Skills() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .skills-container {
+            padding: 0 24px !important;
+          }
+          .skills-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -111,8 +111,7 @@ export default function Contact() {
           pointerEvents: "none",
         }}
       />
-
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="contact-container" style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 32px" }}>
         <ScrollReveal>
           <div style={{ marginBottom: "72px" }}>
             <span className="section-label">06 — Contact</span>
@@ -144,8 +143,8 @@ export default function Contact() {
           className="contact-grid"
         >
           {/* Social Links */}
-          <ScrollReveal direction="left">
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <ScrollReveal direction="left" className="contact-social-wrapper">
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", minWidth: 0 }}>
               <p
                 style={{
                   fontFamily: "var(--font-body)",
@@ -162,6 +161,7 @@ export default function Contact() {
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
+                  className="contact-social-link"
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -206,7 +206,7 @@ export default function Contact() {
                   >
                     {social.icon}
                   </div>
-                  <div style={{ flex: 1, overflow: "hidden" }}>
+                  <div style={{ flex: 1, overflow: "hidden", minWidth: 0 }}>
                     <div
                       style={{
                         fontFamily: "var(--font-body)",
@@ -243,7 +243,7 @@ export default function Contact() {
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.15}>
             <div
-              className="glass gradient-border"
+              className="glass gradient-border contact-form-box"
               style={{
                 padding: "40px",
                 borderRadius: "28px",
@@ -455,9 +455,23 @@ export default function Contact() {
 
       <style>{`
         @media (max-width: 768px) {
+          .contact-container {
+            padding: 0 20px !important;
+          }
           .contact-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
+          }
+          .contact-social-wrapper {
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          .contact-form-box {
+            padding: 24px !important;
+          }
+          .contact-social-link {
+            padding: 16px !important;
+            min-width: 0;
           }
         }
       `}</style>

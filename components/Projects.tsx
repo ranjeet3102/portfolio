@@ -27,15 +27,26 @@ const projects = [
     image: "/construct.png",
   },
   {
+    id: "Churn Prediction",
+    title: "Churn Prediction",
+    description:
+      " Customer Intelligence Platform for churn prediction, CLV estimation, segmentation, and retention using MLpipelines, with EDA-driven insights, optimized churn models, a survival-based CLV engine, and an ROI-focused retention strategy. ",
+    tags: ["React", "FastApi", "Apache Airflow", "XGBoost"],
+    github: "",
+    demo: "#",
+    accent: "var(--accent-lime)",
+    image:"/churn.png"
+  },
+  {
     id: "ecommerce",
     title: "E-Commerce Platform",
     description:
       "A scalable, full-featured e-commerce solution with product management, secure payments, inventory control, and a modern shopping cart experience.",
     tags: ["React", "Spring Boot", "Supabase", "Prisma"],
-    github: "https://github.com/ranjeet3102",
+    github: "https://github.com/ranjeet3102/customer_intelligence_platform",
     demo: "#",
     accent: "var(--accent-lime)",
-    image:"ecommerce.png"
+    image:"/ecommerce.png"
   },
   {
     id: "resume-analyzer",
@@ -160,6 +171,7 @@ export default function Projects() {
                 {/* Image — reorder for odd items */}
                 {idx % 2 !== 0 && (
                   <div
+                    className="project-image"
                     style={{
                       borderRadius: "20px",
                       aspectRatio: "20/10",
@@ -222,7 +234,7 @@ export default function Projects() {
                 )}
 
                 {/* Content */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                <div className="project-content" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                   <div>
                     <span
                       style={{
@@ -313,6 +325,7 @@ export default function Projects() {
                 {/* Image — for even items */}
                 {idx % 2 === 0 && (
                   <div
+                    className="project-image"
                     style={{
                       borderRadius: "20px",
                       aspectRatio: "22/11",
@@ -382,9 +395,18 @@ export default function Projects() {
       <style>{`
         @media (max-width: 768px) {
           .project-card {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            flex-direction: column !important;
             padding: 28px !important;
             gap: 28px !important;
+          }
+          .project-content {
+            order: 1 !important;
+            width: 100% !important;
+          }
+          .project-image {
+            order: 2 !important;
+            width: 100% !important;
           }
         }
       `}</style>

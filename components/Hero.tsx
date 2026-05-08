@@ -129,6 +129,7 @@ function TerminalWindow() {
 
   return (
     <motion.div
+      className="hero-terminal-window"
       initial={{ opacity: 0, x: 60, y: 20 }}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -304,6 +305,7 @@ export default function Hero() {
 
       {/* ── Two-column wrapper ── */}
       <div
+        className="hero-layout"
         style={{
           position: "relative",
           zIndex: 10,
@@ -318,7 +320,7 @@ export default function Hero() {
         }}
       >
         {/* ── LEFT: Text content ── */}
-        <div style={{ flex: "1 1 0", minWidth: 0, textAlign: "left" }}>
+        <div className="hero-text" style={{ flex: "1 1 0", minWidth: 0, textAlign: "left" }}>
           {/* Badge */}
           {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -453,6 +455,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
+            className="hero-buttons"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -486,6 +489,7 @@ export default function Hero() {
 
           {/* Scroll Indicator */}
           <motion.button
+            className="hero-scroll"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.1 }}
@@ -507,7 +511,7 @@ export default function Hero() {
             onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)")}
             aria-label="Scroll to about"
           >
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+            <span className="hero-scroll-text" style={{ fontFamily: "var(--font-body)", fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>
               Scroll
             </span>
             <motion.div
@@ -521,6 +525,7 @@ export default function Hero() {
 
         {/* ── RIGHT: Terminal Window ── */}
         <div
+          className="hero-terminal-wrapper"
           style={{
             flex: "0 0 auto",
             display: "flex",
@@ -548,6 +553,56 @@ export default function Hero() {
           pointerEvents: "none",
         }}
       />
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .hero-layout {
+            flex-direction: column !important;
+            padding: 40px 32px 0 32px !important;
+            gap: 60px !important;
+          }
+          .hero-text {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-text p {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .hero-buttons {
+            justify-content: center !important;
+          }
+          .hero-terminal-wrapper {
+            padding-right: 0 !important;
+            margin-top: 0 !important;
+            width: 100%;
+          }
+          .hero-scroll {
+            align-items: center !important;
+          }
+        }
+        @media (max-width: 768px) {
+          #hero {
+            padding-top: 60px !important;
+          }
+          .hero-terminal-wrapper {
+            display: none !important;
+          }
+          .hero-scroll-text {
+            display: none !important;
+          }
+          .hero-scroll {
+            margin-top: -50px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-layout {
+            padding: 20px 20px 0 20px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

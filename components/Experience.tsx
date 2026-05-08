@@ -78,6 +78,7 @@ export default function Experience() {
         <div style={{ position: "relative" }}>
           {/* Vertical line */}
           <div
+            className="exp-vertical-line"
             aria-hidden="true"
             style={{
               position: "absolute",
@@ -91,12 +92,13 @@ export default function Experience() {
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "40px", paddingLeft: "72px" }}>
+          <div className="exp-container" style={{ display: "flex", flexDirection: "column", gap: "40px", paddingLeft: "72px" }}>
             {experiences.map((exp, idx) => (
               <ScrollReveal key={exp.id} delay={idx * 0.15}>
                 <div style={{ position: "relative" }}>
                   {/* Timeline dot */}
                   <div
+                    className="exp-dot"
                     style={{
                       position: "absolute",
                       left: "-56px",
@@ -111,7 +113,7 @@ export default function Experience() {
                   />
 
                   <div
-                    className="glass gradient-border"
+                    className="glass gradient-border exp-card"
                     style={{
                       padding: "36px 40px",
                       borderRadius: "24px",
@@ -128,6 +130,7 @@ export default function Experience() {
                     }}
                   >
                     <div
+                      className="exp-card-header"
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
@@ -249,6 +252,29 @@ export default function Experience() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .exp-vertical-line {
+            left: 12px !important;
+          }
+          .exp-container {
+            padding-left: 40px !important;
+            gap: 24px !important;
+          }
+          .exp-dot {
+            left: -36px !important; /* Center on 12px line: 40 - 36 + 8 = 12 */
+          }
+          .exp-card {
+            padding: 24px !important;
+          }
+          .exp-card-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
