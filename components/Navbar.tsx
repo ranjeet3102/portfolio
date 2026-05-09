@@ -177,11 +177,12 @@ export default function Navbar() {
               background: "rgba(17,17,17,0.97)",
               backdropFilter: "blur(30px)",
               zIndex: 999,
-              padding: "100px 32px 40px",
+              padding: "100px 32px 120px",
               display: "flex",
               flexDirection: "column",
               gap: "8px",
               borderLeft: "1px solid rgba(255,255,255,0.07)",
+              overflowY: "auto",
             }}
           >
             {navLinks.map((link, i) => (
