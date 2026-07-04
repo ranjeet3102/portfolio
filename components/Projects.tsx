@@ -38,15 +38,16 @@ const projects = [
     image:"/churn.png"
   },
   {
-    id: "ecommerce",
-    title: "E-Commerce Platform",
+    id: "mediassist-ai",
+    title: "MediAssist AI",
     description:
-      "A scalable, full-featured e-commerce solution with product management, secure payments, inventory control, and a modern shopping cart experience.",
-    tags: ["React", "Spring Boot", "Supabase", "Prisma"],
-    github: "https://github.com/ranjeet3102/customer_intelligence_platform",
+      "A GraphRAG-based Medical Evidence Intelligence Platform that retrieves the latest biomedical studies, extracts scientific claims, detects contradictory findings using Natural Language Inference, analyzes contextual factors behind disagreements, and generates evidence-based summaries to support researchers, clinicians, medical students, and patients.",
+    tags: ["GraphRAG", "NLP", "NLI", "FastAPI", "LangChain", "Neo4j"],
+    github: "",
     demo: "#",
     accent: "var(--accent-lime)",
-    image:"/ecommerce.png"
+    image: "",
+    ongoing: true,
   },
   {
     id: "resume-analyzer",
@@ -132,7 +133,7 @@ export default function Projects() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: idx % 2 === 0 ? "1fr 1.2fr" : "1.2fr 1fr",
+                  gridTemplateColumns: !project.image ? "1fr" : idx % 2 === 0 ? "1fr 1.2fr" : "1.2fr 1fr",
                   gap: "48px",
                   alignItems: "center",
                   padding: "48px",
@@ -169,7 +170,7 @@ export default function Projects() {
                 />
 
                 {/* Image — reorder for odd items */}
-                {idx % 2 !== 0 && (
+                {idx % 2 !== 0 && project.image && (
                   <div
                     className="project-image"
                     style={{
@@ -236,20 +237,42 @@ export default function Projects() {
                 {/* Content */}
                 <div className="project-content" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                   <div>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "0.72rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        color: project.accent,
-                        display: "block",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      Featured Project
-                    </span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-body)",
+                          fontSize: "0.72rem",
+                          fontWeight: 600,
+                          letterSpacing: "0.18em",
+                          textTransform: "uppercase",
+                          color: project.accent,
+                          display: "block",
+                        }}
+                      >
+                        Featured Project
+                      </span>
+                      {(project as typeof project & { ongoing?: boolean }).ongoing && (
+                        <span
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "0.65rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.14em",
+                            textTransform: "uppercase",
+                            color: "#fff",
+                            background: "linear-gradient(90deg, #f59e0b, #ef4444)",
+                            padding: "3px 10px",
+                            borderRadius: "100px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "5px",
+                          }}
+                        >
+                          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#fff", display: "inline-block", animation: "pulse 1.5s ease-in-out infinite" }} />
+                          Ongoing
+                        </span>
+                      )}
+                    </div>
                     <h3
                       style={{
                         fontFamily: "var(--font-display)",
@@ -323,7 +346,7 @@ export default function Projects() {
                 </div>
 
                 {/* Image — for even items */}
-                {idx % 2 === 0 && (
+                {idx % 2 === 0 && project.image && (
                   <div
                     className="project-image"
                     style={{
@@ -393,6 +416,10 @@ export default function Projects() {
       </div>
 
       <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.75); }
+        }
         @media (max-width: 768px) {
           .project-card {
             display: flex !important;
